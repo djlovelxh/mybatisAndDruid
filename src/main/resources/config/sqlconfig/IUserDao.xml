@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="dj.mybatis.dao.IUserDao">
+    <!-- User全部字段 -->
+  <!--  <resultMap id="BaseResultMap" type="dj.mybatis.entity.User">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="aname" property="name" jdbcType="VARCHAR" />
+        <result column="birthday" property="birthday" jdbcType="DATE" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+    </resultMap>-->
+    <!-- 定义resultMap，type为HashMap -->
+    <resultMap id="resultMap" type="java.util.HashMap">
+        <!--<id column="id" property="id" jdbcType="INTEGER" />-->
+        <!--<result column="name" property="name" jdbcType="VARCHAR" />-->
+    </resultMap>
+    <!-- 查询语句 -->
+    <select id="getName" resultMap="resultMap">
+--         select id,name from user
+        select t2.* from user t1,person t2 WHERE t1.id=t2.id
+    </select>
+
+    <!--查询所有-->
+    <select id="findAll" resultType="dj.mybatis.entity.User">
+--         select * from user WHERE id <![CDATA[<>]]> 1
+        select * from user WHERE id <![CDATA[<>]]> 2
+    </select>
+
+    </mapper>
+
